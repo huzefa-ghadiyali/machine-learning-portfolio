@@ -1,5 +1,5 @@
 import joblib
-model = joblib.load(r"W:\Storage\Users\Huzefa\Work\Swotting\Jupyter Notebook\Machine Learning Jupyter notebook\End-To-End Projects\Fake Job Detector\model.joblib")
+model = joblib.load(r"model.joblib")
 
 
 def predict_job(description):
