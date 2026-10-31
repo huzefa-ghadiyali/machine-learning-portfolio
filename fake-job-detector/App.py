@@ -9,7 +9,18 @@ model = joblib.load(MODEL_PATH)
 
 def predict_job(description):
     description = description.strip()
+
+    words = re.findall(r"[a-zA-Z]+", description.lower())
     
+    unique_ratio = len(set(words)) / len(words)
+
+    if unique_ratio < 0.25:
+        raise ValueError(
+            "The input contains excessive word repetition. "
+            "Please enter meaningful text."
+        )
+
+        
     tfidf = model.named_steps["tfidf"]
     transformed = tfidf.transform([description])
 
